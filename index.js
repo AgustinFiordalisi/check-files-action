@@ -45,8 +45,8 @@ async function checkFileStartsWithHeader(filePath) {
                 ! await checkFileStartsWithHeader("README.md")
             ) {
                 // get token for octokit
-                const token = core.getInput('repo-token');
-                const octokit = new github.getOctokit(token);
+                //const token = core.getInput('repo-token');
+                //const octokit = new github.getOctokit(token);
 
                 const response = await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
                     owner: github.context.repo.owner,
