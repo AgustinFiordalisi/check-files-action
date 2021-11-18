@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
+const octokit = new Octokit({ auth: `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` });
 
 
 async function checkFileExists(filePath) {
@@ -46,11 +47,10 @@ async function checkFileStartsWithHeader(filePath) {
                 const token = core.getInput('repo-token');
                 const octokit = new github.getOctokit(token);
 
-                // call octokit to create a check with annotation and details
-                const check = await octokit.rest.checks.create({
+                const response = await octokit.request('POST /repos/{owner}/{repo}/check-runs', {
                     owner: github.context.repo.owner,
                     repo: github.context.repo.repo,
-                    name: 'Readme Validator',
+                    name: 'Check Agus',
                     head_sha: github.context.sha,
                     status: 'completed',
                     conclusion: 'failure',
@@ -59,7 +59,6 @@ async function checkFileStartsWithHeader(filePath) {
                         summary: 'Please use markdown syntax to create a title',
                         annotations: [
                             {
-
                                 path: 'README.md',
                                 start_line: 1,
                                 end_line: 1,
@@ -70,10 +69,8 @@ async function checkFileStartsWithHeader(filePath) {
                             }
                         ]
                     }
-                });
-
-
-
+                  })
+                // call octokit to create a check with annotation and details
             }
 
 
