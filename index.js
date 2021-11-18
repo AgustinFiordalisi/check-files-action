@@ -69,7 +69,7 @@ async function checkFileStartsWithHeader(filePath) {
                             }
                         ]
                     }
-                  })
+                  });
                 // call octokit to create a check with annotation and details
             }
 
