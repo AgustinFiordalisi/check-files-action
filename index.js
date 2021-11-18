@@ -67,7 +67,7 @@ async function checkFileStartsWithHeader(filePath) {
                                 message: 'README.md must start with a header',
                                 start_column: 1,
                                 end_column: 1,
-                                raw_details: 'Aca se ven los detalles del check... \n link: https://docs.github.com/en/rest/reference/checks#create-a-check-run--code-samples'
+                                raw_details: 'Aca se ven los detalles del check...\nlink: ${https://docs.github.com/en/rest/reference/checks#create-a-check-run--code-samples}',
                             }
                         ]
                     }
